@@ -18,10 +18,6 @@ output "elasticache_subnets" {
   value = ["${aws_subnet.elasticache.*.id}"]
 }
 
-output "elasticache_subnet_group" {
-  value = "${element(concat(aws_elasticache_subnet_group.elasticache.*.id,list("")),0)}"
-}
-
 output "vpc_id" {
   value = "${aws_vpc.mod.id}"
 }
@@ -62,10 +58,14 @@ output "default_network_acl_id" {
   value = "${aws_vpc.mod.default_network_acl_id}"
 }
 
-output "vpc_endpoint_s3_id" {
-  value = "${element(concat(aws_vpc_endpoint.s3.*.id,list("")),0)}"
-}
+# output "elasticache_subnet_group" {
+#   value = "${element(concat(aws_elasticache_subnet_group.elasticache.*.id,list("")),0)}"
+# }
 
-output "vpc_endpoint_dynamodb_id" {
-    value = "${element(concat(aws_vpc_endpoint.dynamodb.*.id,list("")),0)}"
-}
+# output "vpc_endpoint_s3_id" {
+#   value = "${element(concat(aws_vpc_endpoint.s3.*.id,list("")),0)}"
+# }
+
+# output "vpc_endpoint_dynamodb_id" {
+#     value = "${element(concat(aws_vpc_endpoint.dynamodb.*.id,list("")),0)}"
+# }
