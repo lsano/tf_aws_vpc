@@ -20,7 +20,7 @@ output "elasticache_subnets" {
 
 output "elasticache_subnet_group" {
   #value = "${aws_elasticache_subnet_group.elasticache.id}"
-  value = "${element(concat(aws_elasticache_subnet_group.elasticache.id,list(")),0)}"
+  value = "${element(concat(aws_elasticache_subnet_group.elasticache.id,list("")),0)}"
 
 }
 
