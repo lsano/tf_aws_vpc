@@ -20,7 +20,7 @@ output "elasticache_subnets" {
 
 output "elasticache_subnet_group" {
   #value = "${aws_elasticache_subnet_group.elasticache.id}"
-  value = "${element(concat(aws_elasticache_subnet_group.elasticache.id,list("")),0)}"
+  value = "${element(concat(aws_elasticache_subnet_group.elasticache.*.id,list("")),0)}"
 
 }
 
@@ -65,9 +65,11 @@ output "default_network_acl_id" {
 }
 
 output "vpc_endpoint_s3_id" {
-  value = "${aws_vpc_endpoint.s3.id}"
+  #value = "${aws_vpc_endpoint.s3.id}"
+  value = "${element(concat(aws_vpc_endpoint.s3.*.id,list("")),0)}"
 }
 
 output "vpc_endpoint_dynamodb_id" {
-  value = "${aws_vpc_endpoint.dynamodb.id}"
+#  value = "${aws_vpc_endpoint.dynamodb.id}"
+    value = "${element(concat(aws_vpc_endpoint.dynamodb.*.id,list("")),0)}"
 }
